@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ controller_name }} {% endblock %}
+
+  {% block body %}
+      <section class="abonnements">
+          <div class="titre">
+          </br>
+            <h1>Les Factures SDE</h1>
+            </br>
+            </br>
+          </div>
+     <div>
+       <td><a href="{{ path('addFacture') }}" class="btn btn-success" > ⊕ Ajouter Une Facture </a></td> 
+       </br>
+       </br>
+    </div>
+
+<!--begin -->
+  {% if factures is defined %}
+  <table class="table table-hover">
+  <thead>
+    <tr class="table-info">
+      <th scope="col"></th>
+      <th scope="col">Abonnement</th>
+      <th scope="col">Mois</th>
+      <th scope="col">Consommation </th>
+      <th scope="col">Reglement </th>
+      <th scope="col">Détails</th>
+      <th scope="col">Edition</th>
+      <th scope="col">Suppression</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for facture in factures %}
+      <tr class="table-secondary">
+        <th scope="row"></th>
+            <compteur> 
+              <td><h4>{{ facture.abonnement.contrat }}</h4></td>
+              <td><h4>{{ facture.mois }}</h4></td>
+              <td><h4>{{ facture.consommation }}</h4></td>
+
+              {% if  facture.reglement %}
+                 <td><h4>Payé</h4></td>
+              {% else %}
+                 <td><h4>Impayé</h4></td>
+              {% endif %}
+
+              <td><h4><a href="{{ path('showFacture', {'id': facture.id}) }}" class="btn btn-primary" > Voir Details </a></h4></td>
+              <td><h4><a href="{{ path('editFacture', {'id': facture.id}) }}" class="btn btn-info" > Modifier </a></h4></td>
+              <td><h4><a href="{{ path('editFacture', {'id': facture.id}) }}" class="btn btn-danger" > Supprimer </a></h4></td>         
+            </compteur>
+      </tr>
+     {% endfor %} 
+  </tbody>
+</table> 
+{% endif %}
+<!--end -->
+          
+      </section>
+  {% endblock %}

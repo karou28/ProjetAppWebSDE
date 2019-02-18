@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ controller_name }} {% endblock %}
+
+  {% block body %}
+  <section class="compteurs">
+  <div class="titre">
+    </br>
+    <h1>Les Compteurs SDE</h1>
+    </br>
+    </br>
+  </div>
+   <div>
+       <td><a href="{{ path('addCompteur') }}" class="btn btn-success" > ⊕ Ajouter Un Compteur </a></td> 
+       </br>
+       </br>
+    </div>
+
+<!--begin -->
+  {% if compteurs is defined %}
+  <table class="table table-hover">
+  <thead>
+    <tr class="table-info">
+      <th scope="col"></th>
+      <th scope="col">Numero Compteur</th>
+      <th scope="col">Details Compteur</th>
+      <th scope="col">Editer Compteur</th>
+      <th scope="col">Supprimer Compteur</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for compteur in compteurs %}
+      <tr class="table-secondary">
+        <th scope="row"></th>
+            <compteur> 
+              <td><h4>{{ compteur.numero }}</h4></td>
+              <td><a href="{{ path('showCompteur', {'id': compteur.id}) }}" class="btn btn-primary" > Voir Details </a></td>
+              <td><a href="{{ path('editCompteur', {'id': compteur.id}) }}" class="btn btn-info" > Modifier </a></td> 
+              <td><a href="{{ path('editCompteur', {'id': compteur.id}) }}" class="btn btn-danger" > Supprimer </a></td> 
+            </compteur>
+      </tr>
+     {% endfor %} 
+  </tbody>
+</table> 
+{% endif %}
+<!--end -->
+  
+  </section>
+  {% endblock %}

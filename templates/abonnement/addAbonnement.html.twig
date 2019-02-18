@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block title %} {{ controller_name }} {% endblock %}
+{% block body %}
+
+    {% form_theme formAbonnement 'bootstrap_4_layout.html.twig' %}
+
+    </br></br>
+    {% if editMode %}
+    <h1>Modification de l'abonnement</h1>
+    {% else %}
+    <h1>Enregistrement de l'abonnement</h1>
+    {% endif %}
+    </br></br></br>
+
+    {{ form_start(formAbonnement) }}
+
+   
+
+    {{ form_row(formAbonnement.compteur, {'attr': {'placeholder': "Numéro du compteur"}}) }}
+    {{ form_row(formAbonnement.date, {'attr': {'placeholder': "Date d'abonnement"}}) }}
+    {{ form_row(formAbonnement.contrat, {'attr': {'placeholder': "Contrat d'abonnement"}}) }}
+    {{ form_row(formAbonnement.cumulAncien, {'attr': {'placeholder': "Cumul ancienne consommation"}}) }}
+    {{ form_row(formAbonnement.cumulNouveau, {'attr': {'placeholder': "Cumul nouvelle consommation"}}) }}
+    
+
+    <button type="submit" class="btn btn-success">
+        {% if editMode %}
+         Modifier abonnement
+        {% else %}
+         Enregistrer abonnement
+        {% endif %}
+    </button>
+
+    {{ form_start(formAbonnement) }}
+
+{% endblock %}

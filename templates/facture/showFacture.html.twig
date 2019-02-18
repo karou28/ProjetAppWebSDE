@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block title %} {{ controller_name }} {% endblock %}
+  {% block body %}
+            </br>
+	        <h1>Détail De La Facture</h1>
+			</br>
+			</br>
+			<facture> 
+					<h3> Abonnement : {{ facture.abonnement.contrat }} </h3>
+					<h3> Mois : {{ facture.mois }} </h3>
+					<h3> Consommation : {{ facture.consommation }} m3</h3>
+					 {% if  facture.reglement %}
+                        <td><h3>Reglement : Payé</h3></td>
+                     {% else %}
+                        <td><h3>Reglement : Impayé</h3></td>
+                     {% endif %}
+			</facture>
+
+{% endblock %}

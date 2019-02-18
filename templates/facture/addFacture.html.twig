@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block title %} {{ controller_name }} {% endblock %}
+{% block body %}
+
+    {% form_theme formFacture 'bootstrap_4_layout.html.twig' %}
+
+    </br></br>
+    {% if editMode %}
+    <h1>Modification de la facture</h1>
+     </br></br></br>
+    {% else %}
+    <h1>Enregistrement de la facture</h1>
+    {% endif %}
+    </br></br></br>
+    
+    {{ form_start(formFacture) }}
+
+    {{ form_row(formFacture.abonnement, {'attr': {'placeholder': "Numéro de l'abonnement"}}) }}
+    {{ form_row(formFacture.mois, {'attr': {'placeholder': "Mois"}}) }}
+    {{ form_row(formFacture.consommation, {'attr': {'placeholder': "Consommation"}}) }}
+    {{ form_row(formFacture.prix, {'attr': {'placeholder': "Prix"}}) }}
+    {{ form_row(formFacture.reglement, {'attr': {'placeholder': "Reglement"}}) }}
+    
+
+    <button type="submit" class="btn btn-success">
+        {% if editMode %}
+         Modifier abonnement
+        {% else %}
+         Enregistrer abonnement
+        {% endif %}
+    </button>
+
+    {{ form_start(formFacture) }}
+
+{% endblock %}

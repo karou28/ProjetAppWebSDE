@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block title %} {{ controller_name }} {% endblock %}
+  {% block body %}
+            </br>
+	        <h1>Détail D'Abonnement</h1>
+			</br>
+			</br>
+			<abonnement> 
+					<h3> Contrat : {{ abonnement.contrat }} </h3>
+					<h3> Numéro Compteur : {{ abonnement.compteur.numero }} </h3>
+					<h3> Ancien Cumul De La Consommation : {{ abonnement.cumulAncien }} m3</h3>
+					<h3> Nouveau Cumul De La Consommation :{{ abonnement.cumulNouveau }} m3 </h3>
+			</abonnement>
+
+{% endblock %}

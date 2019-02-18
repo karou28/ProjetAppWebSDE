@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block title %} {{ controller_name }} {% endblock %}
+{% block body %}
+
+    {% form_theme formCompteur 'bootstrap_4_layout.html.twig' %}
+
+    </br></br>
+    {% if editMode %}
+    <h1>Modification De Compteur</h1>
+    {% else %}
+    <h1>Enregistrement Compteur</h1>
+    {% endif %}
+    </br></br></br>
+
+    {{ form_start(formCompteur) }}
+
+    {{ form_row(formCompteur.numero, {'attr': {'placeholder': "Numéro du compteur"}}) }}
+
+    <button type="submit" class="btn btn-success">
+        {% if editMode %}
+         Modifier compteur
+        {% else %}
+         Enregistrer compteur
+        {% endif %}
+    </button>
+
+    {{ form_start(formCompteur) }}
+
+{% endblock %}
